@@ -1,0 +1,16 @@
+---
+title: "stats project"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+cars = read.csv('autos_enriched.csv', header = TRUE, sep = ",", quote = "\"")
+```
+
+```{r}
+dummy_matrix =  model.matrix(~factor(cars$brand))
+```

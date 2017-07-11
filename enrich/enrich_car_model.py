@@ -28,8 +28,13 @@ with open('make_and_model.csv', 'r') as csvfile:
 
 #%%
 NAME_IDX = 1
+SELLER_IDX = 2
+OFFER_IDX = 3
+GEARBOX_IDX = 8
 MODEL_IDX = 10
+FUEL_IDX = 13
 MAKE_IDX = 14
+REPAIR_IDX = 15
 
 c = 0
 
@@ -64,14 +69,28 @@ def get_model(make, name):
 #    print(name)
     return 'unknown'
 
-with open('autos.csv', 'r', encoding='iso-8859-1') as csvfile_in:
-    with open('autos_enriched.csv', 'w', encoding='iso-8859-1') as csvfile_out:
+def translate(row):
+    seller_dict = {'gewerblich': 'business', 'privat': 'private'}
+    offer_dict = {'Angebot': 'selling', 'Gesuch': 'buying'}
+    gearbox_dict= {'automatik': 'automatic', 'manuell': 'manual'}
+    fuel_dict = {'andere': 'other', 'benzin': 'gasoline', 'elektro': 'electric'}
+    repair_dict = {'ja': 'yes', 'nein': 'no'}
+    row[SELLER_IDX] = seller_dict.get(row[SELLER_IDX], row[SELLER_IDX])
+    row[OFFER_IDX] = offer_dict.get(row[OFFER_IDX], row[OFFER_IDX])
+    row[GEARBOX_IDX] = gearbox_dict.get(row[GEARBOX_IDX], row[GEARBOX_IDX])
+    row[FUEL_IDX] = fuel_dict.get(row[FUEL_IDX], row[FUEL_IDX])
+    row[REPAIR_IDX] = repair_dict.get(row[REPAIR_IDX], row[REPAIR_IDX])
+    return row
+
+with open('../autos.csv', 'r', encoding='iso-8859-1') as csvfile_in:
+    with open('../autos_enriched.csv', 'w', encoding='iso-8859-1') as csvfile_out:
         autos_reader = csv.reader(csvfile_in)
         autos_writer = csv.writer(csvfile_out)
         header = next(autos_reader)
         header.insert(MODEL_IDX, 'model_enriched')
         autos_writer.writerow(header)
         for row in autos_reader:
+            row = translate(row)
             model = row[MODEL_IDX]
             if model not in all_models:
                 make = row[MAKE_IDX]
