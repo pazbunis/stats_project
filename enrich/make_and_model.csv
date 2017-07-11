@@ -643,6 +643,7 @@ bmw,alpina b7 lwb xdrive
 bmw,alpina b7 swb
 bmw,alpina b7 swb xdrive
 bmw,alpina b7 xdrive
+bmw,i3
 bmw,i3 bev
 bmw,i3 bev (60  amp-hour battery)
 bmw,i3 bev (94 amp-hour battery)
@@ -2341,6 +2342,7 @@ ford,grand c-max
 ford,ka/ka+
 ford,kuga
 ford,m
+ford,ka
 ford,maverick
 ford,mercury
 ford,mondeo
@@ -2862,18 +2864,6 @@ hyundai,tucson
 hyundai,verna
 hyundai,xg 30
 hyundai,xg 350
-import foreign auto sales inc,1fas 410
-import trade services,bmw 325i
-import trade services,its 190e
-import trade services,its 190e 2.0
-import trade services,its 190e 2.3
-import trade services,its 200te
-import trade services,its 230ce
-import trade services,its 230te
-import trade services,its 320
-import trade services,its 520
-import trade services,mb 300e
-import trade services,mb 300sl
 infiniti,ex35
 infiniti,ex35 awd
 infiniti,ex37
@@ -3907,6 +3897,9 @@ melex,967 h
 melex,969
 melex,986
 melex,others
+mercedes-benz,140
+mercedes-benz,150
+mercedes-benz,160
 mercedes-benz,190
 mercedes-benz,190 d 2.2/190 e 2.3
 mercedes-benz,190d 2.5
@@ -5037,283 +5030,6 @@ oldsmobile,dynamic 88
 oldsmobile,others
 oldsmobile,silhouette
 oldsmobile,supreme
-oldtimer,abarth
-oldtimer,ac
-oldtimer,adler
-oldtimer,alfa romeo
-oldtimer,allard
-oldtimer,alvis
-oldtimer,amc
-oldtimer,american
-oldtimer,amphicar
-oldtimer,ariel
-oldtimer,aries
-oldtimer,armstrong siddeley
-oldtimer,arnolt
-oldtimer,asa
-oldtimer,asc
-oldtimer,aston martin
-oldtimer,auburn
-oldtimer,audi
-oldtimer,aurora
-oldtimer,austin
-oldtimer,austin-healey
-oldtimer,auto union
-oldtimer,autobianchi
-oldtimer,avanti
-oldtimer,barkas
-oldtimer,beast
-oldtimer,bedford
-oldtimer,belsize
-oldtimer,benjamin
-oldtimer,bentley
-oldtimer,berkeley
-oldtimer,bitter
-oldtimer,bizzarrini
-oldtimer,bmw
-oldtimer,borgward
-oldtimer,brennabor
-oldtimer,bricklin
-oldtimer,bugatti
-oldtimer,buick
-oldtimer,cadillac
-oldtimer,chaika
-oldtimer,champion
-oldtimer,charron
-oldtimer,checker
-oldtimer,chenard & walker
-oldtimer,chevrolet
-oldtimer,chrysler
-oldtimer,cisitalia
-oldtimer,citroen
-oldtimer,cj rayburn
-oldtimer,clan
-oldtimer,clenet
-oldtimer,commer
-oldtimer,continental
-oldtimer,cord
-oldtimer,corvette
-oldtimer,cunningham
-oldtimer,d.f.p
-oldtimer,daf
-oldtimer,daimler
-oldtimer,dante
-oldtimer,datsun
-oldtimer,day elder
-oldtimer,de dion bouton
-oldtimer,de lorean
-oldtimer,de soto
-oldtimer,de tomaso
-oldtimer,delage
-oldtimer,delahaye
-oldtimer,denzel
-oldtimer,desoto
-oldtimer,deutz
-oldtimer,dkw
-oldtimer,dodge
-oldtimer,dort
-oldtimer,duesenberg
-oldtimer,durant
-oldtimer,dutton
-oldtimer,edsel
-oldtimer,elva
-oldtimer,emw
-oldtimer,england
-oldtimer,enzmann
-oldtimer,essex
-oldtimer,excalibur
-oldtimer,facel vega
-oldtimer,fairthorpe
-oldtimer,falcon
-oldtimer,fenton-riley
-oldtimer,ferrari
-oldtimer,fiat
-oldtimer,fire vehicle
-oldtimer,fleur de lys
-oldtimer,fn
-oldtimer,ford
-oldtimer,fordson
-oldtimer,formula-car
-oldtimer,franklin
-oldtimer,frazer nash
-oldtimer,fuldamobil
-oldtimer,gaz
-oldtimer,ghia
-oldtimer,gilbern
-oldtimer,ginatta
-oldtimer,ginetta
-oldtimer,glas
-oldtimer,gmc
-oldtimer,goggomobil
-oldtimer,goliath
-oldtimer,gordon keeble
-oldtimer,graham-paige
-oldtimer,gsm
-oldtimer,gutbrod
-oldtimer,hanomag
-oldtimer,harley davidson
-oldtimer,healey
-oldtimer,heinkel
-oldtimer,heritage
-oldtimer,hillman
-oldtimer,hino
-oldtimer,hispano-suiza
-oldtimer,holden
-oldtimer,honda
-oldtimer,horch
-oldtimer,hotchkiss
-oldtimer,hrg
-oldtimer,hudson
-oldtimer,humber
-oldtimer,hupmobile
-oldtimer,ifa
-oldtimer,ihc
-oldtimer,innocenti
-oldtimer,international
-oldtimer,iso rivolta
-oldtimer,isuzu
-oldtimer,jaguar
-oldtimer,jeep
-oldtimer,jensen
-oldtimer,kaiser
-oldtimer,kaiser - frazer
-oldtimer,karmann
-oldtimer,karmann ghia
-oldtimer,kelly
-oldtimer,kleinschnittger
-oldtimer,la licorne
-oldtimer,lagonda
-oldtimer,lamborghini
-oldtimer,lanchester
-oldtimer,lancia
-oldtimer,land rover
-oldtimer,lanz
-oldtimer,lasalle
-oldtimer,lea francis
-oldtimer,ligier
-oldtimer,lincoln
-oldtimer,lkw-trucks
-oldtimer,lloyd
-oldtimer,lmx
-oldtimer,lombardi
-oldtimer,lorraine dietrich
-oldtimer,lotus
-oldtimer,mack
-oldtimer,magirus
-oldtimer,man
-oldtimer,marauder
-oldtimer,march
-oldtimer,marcos
-oldtimer,marmon
-oldtimer,maserati
-oldtimer,mathis
-oldtimer,matra
-oldtimer,maybach
-oldtimer,mazda
-oldtimer,mercedes benz
-oldtimer,mercury
-oldtimer,merlin
-oldtimer,messerschmitt
-oldtimer,mg
-oldtimer,military vehicle
-oldtimer,minerva
-oldtimer,mitsubishi
-oldtimer,monica
-oldtimer,monteverdi
-oldtimer,moretti
-oldtimer,morgan
-oldtimer,morgan darmont
-oldtimer,morris leon bolle
-oldtimer,morris minor
-oldtimer,moskvitch
-oldtimer,motorräder-bike
-oldtimer,munga
-oldtimer,muntz
-oldtimer,nash
-oldtimer,nissan
-oldtimer,nsu
-oldtimer,ogle
-oldtimer,oldsmobile
-oldtimer,om
-oldtimer,opel
-oldtimer,osca
-oldtimer,others
-oldtimer,overland
-oldtimer,packard
-oldtimer,panhard
-oldtimer,panther
-oldtimer,paterson
-oldtimer,peerless
-oldtimer,pegaso
-oldtimer,peugeot
-oldtimer,pierce arrow
-oldtimer,pontiac
-oldtimer,porsche
-oldtimer,puch
-oldtimer,puma
-oldtimer,rambler
-oldtimer,reliant
-oldtimer,renault
-oldtimer,rent bonnet
-oldtimer,republic
-oldtimer,riley
-oldtimer,rolls royce
-oldtimer,rosengart
-oldtimer,rotus
-oldtimer,roush
-oldtimer,rover
-oldtimer,rovin
-oldtimer,saab
-oldtimer,salmson
-oldtimer,saurer
-oldtimer,seat
-oldtimer,sebring
-oldtimer,setra
-oldtimer,shelby
-oldtimer,shores
-oldtimer,siata
-oldtimer,simca
-oldtimer,skoda
-oldtimer,spartan
-oldtimer,spitzer
-oldtimer,standard
-oldtimer,stephens
-oldtimer,steyr
-oldtimer,studebaker
-oldtimer,stutz
-oldtimer,subaru
-oldtimer,sunbeam
-oldtimer,talbot
-oldtimer,tatra
-oldtimer,tempo
-oldtimer,toyota
-oldtimer,trabant
-oldtimer,tractor
-oldtimer,trident
-oldtimer,triumph
-oldtimer,tucker
-oldtimer,turner
-oldtimer,tvr
-oldtimer,uaz
-oldtimer,unic
-oldtimer,unimog
-oldtimer,vanden plas
-oldtimer,veritas
-oldtimer,vignale
-oldtimer,vixen
-oldtimer,voisin
-oldtimer,volkswagen
-oldtimer,volvo
-oldtimer,wanderer
-oldtimer,wartburg
-oldtimer,westfalia
-oldtimer,westfield
-oldtimer,wetsch
-oldtimer,willys
-oldtimer,wolseley
-oldtimer,yugo
-oldtimer,zimmer
-oldtimer,zündapp
 opel,adam
 opel,agila
 opel,ampera
