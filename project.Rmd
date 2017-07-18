@@ -8,9 +8,72 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-cars = read.csv('autos_enriched.csv', header = TRUE, sep = ",", quote = "\"")
+org_cars = read.csv('autos_enriched.csv', header = TRUE, sep = ",", quote = "\"")
 ```
 
+
+Preparing the data:
 ```{r}
-dummy_matrix =  model.matrix(~factor(cars$brand))
+cars = org_cars
+cars$online = as.double(as.POSIXct(cars$lastSeen) - as.POSIXct(cars$dateCreated), units = "secs")
+cars = cars[cars$offerType == 'selling', ]
+
+#cars = cars[1:10000, ]
+
+
+variables = c('vehicleType', 'yearOfRegistration', 'gearbox', 'powerPS', 'model_enriched', 'kilometer', 'fuelType', 'brand', 'notRepairedDamage','online', 'price')
+
+cars = cars[, variables]
+
+# clean data
+cars = cars[cars$powerPS < 400,]
+cars = cars[cars$price < 700000,]
+cars = cars[cars$price > 100, ]
+cars$idx = 1:nrow(cars)
+cars$price = log(cars$price)
+
+dummy_type =  model.matrix(~factor(cars$vehicleType))
+dummy_gb =  model.matrix(~factor(cars$gearbox))
+dummy_model =  model.matrix(~factor(cars$model_enriched))
+dummy_fuel =  model.matrix(~factor(cars$fuelType))
+dummy_brand =  model.matrix(~factor(cars$brand))
+dummy_not_repaired =  model.matrix(~factor(cars$notRepairedDamage))
+
+cars_huge = cbind(yearOfRegistration=cars$yearOfRegistration,powerPS=cars$powerPS, kilometer=cars$kilometer, online=cars$online, price=cars$price, dummy_brand, dummy_fuel, dummy_gb, dummy_model, dummy_not_repaired, dummy_type, brand=cars$brand)
+```
+
+Preparing the datasets:
+```{r}
+# train_val, test
+cars_idx_brand = cars[,c('brand', 'idx')]
+brand_groups = split(cars_idx_brand, cars_idx_brand$brand)
+samples <- lapply(brand_groups, function(group) {
+  if (nrow(group) > 0) {
+    group[sample(1:nrow(group), 0.1 * nrow(group), FALSE),'test']=TRUE
+  }
+  return(group)
+})
+out <- do.call(rbind, samples)
+
+cars_idx_train_and_val = out[-which(out$test == TRUE), -ncol(out)]
+cars_idx_test = out[which(out$test == TRUE), -ncol(out)]
+cars_huge_test = cars_huge[cars_idx_test$idx, ]
+
+# train, val
+brand_groups = split(cars_idx_train_and_val, cars_idx_train_and_val$brand)
+samples <- lapply(brand_groups, function(group) {
+  if (nrow(group) > 0) {
+    group[sample(1:nrow(group), 0.3 * nrow(group), FALSE),'val']=TRUE
+  }
+  return(group)
+})
+out <- do.call(rbind, samples)
+
+cars_idx_train = out[-which(out$val == TRUE), -ncol(out)]
+cars_idx_val = out[which(out$val == TRUE), -ncol(out)]
+cars_huge_train = cars_huge[cars_idx_train$idx, ]
+cars_huge_val = cars_huge[cars_idx_val$idx, ]
+
+
+#dummy_matrix =  model.matrix(~factor(cars_huge$brand))
 ```
