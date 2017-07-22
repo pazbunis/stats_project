@@ -8,29 +8,35 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
+library('corrplot')
+library(caTools)
+```
+
+```{r}
 org_cars = read.csv('autos_enriched.csv', header = TRUE, sep = ",", quote = "\"")
 ```
 
 
 Preparing the data:
 ```{r}
-cars = org_cars
-cars$online = as.double(as.POSIXct(cars$lastSeen) - as.POSIXct(cars$dateCreated), units = "secs")
+cars = org_cars[1:5000, ]
+cars$timeOnline = as.double(as.POSIXct(cars$lastSeen) - as.POSIXct(cars$dateCreated), units = "secs")
 cars = cars[cars$offerType == 'selling', ]
 
-#cars = cars[1:10000, ]
-
-
-variables = c('vehicleType', 'yearOfRegistration', 'gearbox', 'powerPS', 'model_enriched', 'kilometer', 'fuelType', 'brand', 'notRepairedDamage','online', 'price')
+variables = c('vehicleType', 'yearOfRegistration', 'gearbox', 'powerPS', 'model_enriched', 'kilometer', 'fuelType', 'brand', 'notRepairedDamage','timeOnline', 'price')
 
 cars = cars[, variables]
 
 # clean data
 cars = cars[cars$powerPS < 400,]
+cars = cars[cars$powerPS > 0,]
 cars = cars[cars$price < 700000,]
 cars = cars[cars$price > 100, ]
-cars$idx = 1:nrow(cars)
+cars = cars[cars$yearOfRegistration > 1900, ]
+cars = cars[cars$yearOfRegistration < 2018, ]
+
 cars$price = log(cars$price)
+cars$yearOfRegistration = as.numeric(as.character(cars$yearOfRegistration))
 
 dummy_type =  model.matrix(~factor(cars$vehicleType))
 dummy_gb =  model.matrix(~factor(cars$gearbox))
@@ -41,6 +47,30 @@ dummy_not_repaired =  model.matrix(~factor(cars$notRepairedDamage))
 
 cars_huge = cbind(yearOfRegistration=cars$yearOfRegistration,powerPS=cars$powerPS, kilometer=cars$kilometer, online=cars$online, price=cars$price, dummy_brand, dummy_fuel, dummy_gb, dummy_model, dummy_not_repaired, dummy_type, brand=cars$brand)
 ```
+
+EDA - correlations of price and other variables:
+```{r}
+M = cor(cars[,c('price', 'yearOfRegistration', 'powerPS', 'timeOnline', 'kilometer')])
+corrplot(M)
+```
+
+
+
+Splitting the data into train, validation and test (preserving the brand ratios):
+```{r}
+# train+val, test
+train_val_rows = sample.split(cars$brand, SplitRatio=0.9)
+train_val = cars[train_val_rows,]
+test = cars[!train_val_rows,]
+
+# train, val
+train_rows = sample.split(train_val$brand, SplitRatio=0.8)
+train  = train_val[train_rows,]
+val  = train_val[!train_rows,]
+```
+
+
+
 
 Preparing the datasets:
 ```{r}
